@@ -45,7 +45,7 @@ Objetivo: conectar proprietários e hóspedes com uma interface simples, segura 
 - Listagem pública de pousadas  
 - Busca por nome e localização  
   
-**Quartos**  
+**Quartos**  *(em desenvolvimento)*  
 - Cadastro de tipos de quarto  
 - Associação de quartos a pousadas  
   
