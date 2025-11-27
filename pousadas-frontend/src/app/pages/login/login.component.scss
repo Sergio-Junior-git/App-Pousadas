@@ -1,0 +1,36 @@
+.container {
+  height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.content {
+  padding: 20px;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+
+  mat-card {
+    width: 350px;
+    padding: 20px;
+  }
+
+  .full {
+    width: 100%;
+  }
+}

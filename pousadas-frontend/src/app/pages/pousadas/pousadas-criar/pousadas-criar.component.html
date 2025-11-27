@@ -1,0 +1,42 @@
+<div class="page-container">
+  <h1 class="title">Nova Pousada</h1>
+
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <!-- Inputs normais -->
+    <mat-form-field appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Endereço</mat-label>
+      <input matInput formControlName="endereco">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Telefone</mat-label>
+      <input matInput formControlName="telefone">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Cidade</mat-label>
+      <input matInput formControlName="cidade">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Estado</mat-label>
+      <input matInput formControlName="estado">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Descrição</mat-label>
+      <textarea matInput rows="3" formControlName="descricao"></textarea>
+    </mat-form-field>
+
+    <!-- Botões -->
+    <div class="btn-actions">
+      <button mat-button type="button" class="btn-cancelar" routerLink="/pousadas" >Cancelar</button>
+      <button mat-stroked-button class="btn-salvar" type="submit">Salvar</button>
+    </div>
+  </form>
+</div>
