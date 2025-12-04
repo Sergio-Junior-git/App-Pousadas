@@ -36,7 +36,9 @@ export class LoginComponent {
         senha: this.senha
       }).subscribe({
         next: (resp) => {
-          this.token.setToken(resp.token);
+          if (resp.token) { // Verifica se resp.token não é undefined/null/string vazia
+            this.token.setToken(resp.token);
+          }
           this.router.navigate(['/']);
         },
         error: () => alert('Login inválido')

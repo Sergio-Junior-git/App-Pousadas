@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.pousadas.reserva_pousadas.model.Pousada;
@@ -32,9 +33,17 @@ public class PousadaController {
     private UserService userService;
 
     @GetMapping
-    public List<Pousada> listarPousadas() {
-        return pousadasService.listarTodasPousadas();
-    }
+        public List<Pousada> listarPousadas(
+            // Adiciona um RequestParam opcional para filtrar por cidade
+            @RequestParam(required = false) String cidade
+        ) {
+            if (cidade != null && !cidade.trim().isEmpty()) {
+                // Novo método para buscar por cidade
+                return pousadasService.buscarPorCidade(cidade); 
+            }
+            // Retorna todas se nenhum filtro for fornecido
+            return pousadasService.listarTodasPousadas();
+        }
 
     @GetMapping("/{id}")
     public ResponseEntity<Pousada> buscarIdPousada(@PathVariable Long id) {

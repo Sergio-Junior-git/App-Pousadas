@@ -1,30 +1,121 @@
-.container {
-  height: 100vh;
+// O :host garante que os estilos são aplicados apenas a este componente.
+// Usamos :host para aplicar o padding de layout principal.
+:host {
+    display: block; // Importante para que o padding e a largura funcionem
 }
 
-.topbar {
-  display: flex;
-  align-items: center;
+.pousadas-page-container {
+    // Agora o padding está encapsulado aqui, em vez de vazar do Home.
+    padding: 20px; 
+    display: flex;
+    gap: 30px; 
+    min-height: calc(100vh - 64px - 40px); // 100vh - (Toolbar Height) - (Padding Top/Bottom)
 }
 
-.title {
-  font-size: 20px;
-  font-weight: 600;
+/* ------------------ Sidebar de Filtros ------------------ */
+.filters-sidebar {
+    width: 280px;
+    flex-shrink: 0;
+    padding: 15px;
+    background-color: #f7f7f7; // Cor mais suave
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); // Sombra sutil
+    height: fit-content;
+
+    h2 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 1.3em;
+        color: #333;
+    }
+
+    h3 {
+        margin-top: 15px;
+        margin-bottom: 10px;
+        color: #555;
+    }
 }
 
-.spacer {
-  flex: 1 1 auto;
+.full-width {
+    width: 100%;
 }
 
-.content {
-  padding: 20px;
+.apply-search {
+    margin-top: 15px;
+    font-weight: 500;
+    // Opcional: Aumentar o botão
+    height: 48px; 
 }
 
-table {
-  width: 100%;
-  margin-top: 20px;
+/* ------------------ Área Principal de Resultados ------------------ */
+.results-main {
+    flex-grow: 1;
+
+    h1 {
+        margin-top: 0;
+        font-size: 2em;
+        color: #333;
+    }
+
+    .results-count {
+        color: #777;
+        margin-bottom: 20px;
+    }
 }
 
-button {
-  margin-bottom: 20px;
+.pousadas-list {
+    display: grid;
+    // Layout responsivo que tenta 3 colunas, mas ajusta
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px; // Espaçamento um pouco maior entre os cards
+    margin-top: 20px;
 }
+
+/* ------------------ Card da Pousada ------------------ */
+.pousada-card {
+    height: 100%;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    // Estilizando a imagem dentro do Card (usando SCSS aninhado)
+    mat-card-image {
+        height: 200px;
+        object-fit: cover;
+        width: 100%;
+        // Aplica o canto arredondado apenas na parte superior da imagem
+        border-radius: 8px 8px 0 0; 
+    }
+
+    mat-card-header {
+        padding-top: 16px; // Espaçamento maior
+        padding-bottom: 0;
+    }
+
+    mat-card-content {
+        padding-top: 8px;
+
+        .rating {
+            color: #ff9800; // Estrela Amarela/Laranja
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .location {
+            color: #777;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #4CAF50; // Preço em destaque (verde)
+        }
+    }
+}
+

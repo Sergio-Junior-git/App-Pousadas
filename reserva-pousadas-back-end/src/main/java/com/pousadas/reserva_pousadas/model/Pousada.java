@@ -2,9 +2,12 @@ package com.pousadas.reserva_pousadas.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -34,6 +37,9 @@ public class Pousada {
     @Column(name = "estado", length = 50, nullable = false)
     private String estado;
 
+    @Column(name = "preco", nullable = false)
+    private float preco;
+
     @Column(name = "descricao", columnDefinition = "TEXT")
     private String descricaoPousada;
 
@@ -41,8 +47,9 @@ public class Pousada {
     @JoinColumn(name = "usuario_id", nullable = false)
     private User usuario; // dono/admin
 
-    @OneToMany(mappedBy = "pousada", cascade = CascadeType.ALL)
-    private List<Quartos> quarto;
+    @JsonIgnoreProperties("pousada")
+    @OneToMany(mappedBy = "pousada", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Quartos> quartos;
 
     public Long getId() {
         return id;
@@ -100,12 +107,12 @@ public class Pousada {
         this.usuario = usuario;
     }
 
-    public List<Quartos> getQuarto() {
-        return quarto;
+    public List<Quartos> getQuartos() {
+        return quartos;
     }
 
-    public void setQuarto(List<Quartos> quarto) {
-        this.quarto = quarto;
+    public void setQuartos(List<Quartos> quartos) {
+        this.quartos = quartos;
     }
 
     

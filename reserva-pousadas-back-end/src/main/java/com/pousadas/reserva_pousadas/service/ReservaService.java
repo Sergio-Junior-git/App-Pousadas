@@ -18,15 +18,15 @@ public class ReservaService {
         return reservaRepo.findAll();
     }
 
-    public Reserva buscarPorIdReservas(Integer id) {
+    public Reserva buscarPorIdReservas(Long id) {
         return reservaRepo.findById(id).orElse(null);
     }
 
     public Reserva salvarReservas(Reserva reserva) {
         boolean existeConflito = reservaRepo.existsByQuartoIdAndPeriodo(
-                reserva.getQuarto().getQuartosId(),
-                reserva.getDataCheckout(),
-                reserva.getDataCheckin()
+            reserva.getQuarto().getQuartosId(),
+            reserva.getDataCheckin(),
+            reserva.getDataCheckout()  
         );
         if (existeConflito) {
             throw new RuntimeException("O quarto já está reservado nesse período.");
@@ -34,7 +34,7 @@ public class ReservaService {
         return reservaRepo.save(reserva);
     }
 
-    public void deletarReservas(Integer id) {
+    public void deletarReservas(Long id) {
         reservaRepo.deleteById(id);
     }
 }

@@ -25,8 +25,8 @@ public class SecurityConfig {
                 .requestMatchers("/auth/login").permitAll()
                 .requestMatchers("/usuarios").permitAll()
                 .requestMatchers("/auth/register").permitAll() // se quiser cadastro público
-                .requestMatchers("/pousadas").permitAll() // se quiser tudo público, remover depois
-
+                .requestMatchers("/pousadas/**").permitAll() // Listar e buscar pousadas é público
+                .requestMatchers("/quartos/**").permitAll()
                 // Tudo restante precisa de token:
                 .anyRequest().authenticated()
 

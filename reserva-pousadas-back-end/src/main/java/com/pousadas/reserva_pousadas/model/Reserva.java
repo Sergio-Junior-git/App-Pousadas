@@ -31,7 +31,7 @@ public class Reserva {
 
     @Enumerated(EnumType.STRING)
     private StatusReserva status = StatusReserva.PENDENTE;
-
+    
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
     private User usuario;

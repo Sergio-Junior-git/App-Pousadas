@@ -1,0 +1,32 @@
+<div class="hero-container">
+
+    <h1 class="main-title">Encontre Sua Estadia Perfeita!</h1>
+    <p class="subtitle">
+        Milhares de pousadas, chalés e hotéis esperam por você. Reserve com tranquilidade e os melhores preços.
+    </p>
+
+    <mat-card class="search-card mat-elevation-z8">
+        <mat-card-content>
+            <form class="search-form">
+                <mat-form-field appearance="fill" class="search-field">
+                    <mat-label>Destino</mat-label>
+                    <input matInput placeholder="Ex: Búzios, RJ" [(ngModel)]="cidadeBusca" name="cidade">
+                    <mat-icon matSuffix>location_on</mat-icon>
+                </mat-form-field>
+                
+                <mat-form-field appearance="fill" class="search-field date-field">
+                    <mat-label>Check-in / Check-out</mat-label>
+                    <input matInput [matDatepicker]="picker">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                
+                <button mat-raised-button color="accent" class="search-button" (click)="iniciarBusca()">
+                    <mat-icon>search</mat-icon>
+                    Buscar
+                </button>
+            </form>
+        </mat-card-content>
+    </mat-card>
+
+</div>

@@ -29,7 +29,7 @@ public class QuartosController {
     }
 
     @GetMapping("/{id}")
-    public Quartos buscarIdQuartos(@PathVariable Integer id) {
+    public Quartos buscarIdQuartos(@PathVariable Long id) {
         return quartosService.buscarPorIdQuartos(id);
     }
 
@@ -39,7 +39,7 @@ public class QuartosController {
     }
 
     @DeleteMapping("/{id}")
-    public void deletarQuarto(@PathVariable Integer id) {
+    public void deletarQuarto(@PathVariable Long id) {
         quartosService.deletarQuartos(id);
     }
 

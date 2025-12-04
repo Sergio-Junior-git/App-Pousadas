@@ -1,0 +1,88 @@
+:host {
+    display: block;
+    padding: 30px;
+    background-color: #f7f9fc; // Fundo cinza claro
+    min-height: 100vh;
+}
+
+.detalhe-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 30px;
+}
+
+.header-section {
+    margin-bottom: 20px;
+    
+    .cover-img {
+        width: 100%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 20px;
+    }
+
+    h1 {
+        font-size: 2.5em;
+        color: #333;
+        margin-bottom: 5px;
+    }
+
+    .location {
+        display: flex;
+        align-items: center;
+        color: #666;
+        margin-bottom: 15px;
+        
+        mat-icon { font-size: 18px; width: 18px; margin-right: 5px; }
+    }
+
+    .description {
+        line-height: 1.6;
+        color: #444;
+    }
+}
+
+.booking-section {
+    margin-top: 30px;
+
+    h2 { margin-bottom: 20px; }
+
+    .date-selector {
+        margin-bottom: 30px;
+        mat-form-field { width: 100%; max-width: 400px; }
+    }
+}
+
+.quarto-card {
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    
+    .quarto-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px;
+    }
+
+    .quarto-action {
+        text-align: right;
+        
+        .price {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #4CAF50;
+            margin-bottom: 10px;
+            
+            small { font-size: 0.6em; color: #777; font-weight: normal; }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .quarto-content { flex-direction: column; text-align: left; }
+    .quarto-action { text-align: left; margin-top: 15px; }
+}

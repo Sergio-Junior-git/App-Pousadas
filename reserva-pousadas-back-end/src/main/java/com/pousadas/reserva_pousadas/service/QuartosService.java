@@ -18,15 +18,15 @@ public class QuartosService {
         return quartosRepo.findAll();
     }
 
-    public Quartos buscarPorIdQuartos(Integer id) {
+    public Quartos buscarPorIdQuartos(Long id) {
         return quartosRepo.findById(id).orElse(null);
     }
 
-    public Quartos salvarQuartos(Quartos quarto) {
-        return quartosRepo.save(quarto);
+    public Quartos salvarQuartos(Quartos quartos) {
+        return quartosRepo.save(quartos);
     }
 
-    public void deletarQuartos(Integer id) {
+    public void deletarQuartos(Long id) {
         quartosRepo.deleteById(id);
     }
 }

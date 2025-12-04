@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit{
 
+  
   usuarioLogado = false;
 
   constructor(

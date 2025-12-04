@@ -3,29 +3,24 @@
   <mat-sidenav mode="side" opened>
     <mat-toolbar color="primary">Menu</mat-toolbar>
 
-    <mat-nav-list>
+  <mat-nav-list>
 
-      <a mat-list-item routerLink="/usuarios">
-        <mat-icon>person</mat-icon>
-        &nbsp; Usuários
-      </a>
+  <a mat-list-item routerLink="/home"> 
+    <mat-icon>house</mat-icon>
+    &nbsp; Inicio
+  </a>
 
-      <a mat-list-item routerLink="/pousadas">
-        <mat-icon>home</mat-icon>
-        &nbsp; Pousadas
-      </a>
+  <a mat-list-item routerLink="/home/pousadas">
+    <mat-icon>home</mat-icon>
+    &nbsp; Pousadas
+  </a>
 
-      <a mat-list-item routerLink="/quartos">
-        <mat-icon>hotel</mat-icon>
-        &nbsp; Quartos
-      </a>
+  <a mat-list-item routerLink="/home/reservas/minhas">
+    <mat-icon>event_available</mat-icon>
+    &nbsp; Reservas
+  </a>
 
-      <a mat-list-item routerLink="/reservas">
-        <mat-icon>event_available</mat-icon>
-        &nbsp; Reservas
-      </a>
-
-    </mat-nav-list>
+</mat-nav-list>
   </mat-sidenav>
 
   <mat-sidenav-content>
@@ -40,11 +35,8 @@
         Sair
       </button>
     </mat-toolbar>
-
     <div class="content">
       <router-outlet></router-outlet>
     </div>
-
   </mat-sidenav-content>
-
 </mat-sidenav-container>

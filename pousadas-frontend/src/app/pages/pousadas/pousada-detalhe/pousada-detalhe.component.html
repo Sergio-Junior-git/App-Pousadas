@@ -1,0 +1,54 @@
+<div class="detalhe-container" *ngIf="pousada">
+  
+  <div class="header-section">
+    <img src="assets/img/pousada-placeholder.jpg" alt="Foto da Pousada" class="cover-img">
+    
+    <div class="header-info">
+      <h1>{{ pousada.nome }}</h1>
+      <p class="location">
+        <mat-icon>location_on</mat-icon> 
+        {{ pousada.cidade }}, {{ pousada.estado }} - {{ pousada.endereco }}
+      </p>
+      <p class="description">{{ pousada.descricaoPousada }}</p>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="booking-section">
+    <h2>Disponibilidade e Quartos</h2>
+    
+    <div class="date-selector">
+        <mat-form-field appearance="outline">
+            <mat-label>Escolha as datas da estadia</mat-label>
+            <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+              <input matStartDate formControlName="start" placeholder="Check-in">
+              <input matEndDate formControlName="end" placeholder="Check-out">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+    </div>
+
+    <div class="quartos-list">
+        <mat-card class="quarto-card" *ngFor="let quarto of pousada.quartos">
+            <div class="quarto-content">
+                <div class="quarto-info">
+                    <h3>Quarto {{ quarto.numeroQuartos }} - {{ quarto.tipo }}</h3>
+                    <p>Capacidade: {{ quarto.capacidade }} pessoas</p>
+                </div>
+                <div class="quarto-action">
+                    <p class="price">R$ {{ quarto.precoQuartos }} <small>/ noite</small></p>
+                    <button mat-raised-button color="primary" [disabled]="range.invalid" (click)="reservar(quarto.quartosId)">
+                        Reservar Agora
+                    </button>
+                </div>
+            </div>
+        </mat-card>
+
+        <div *ngIf="!pousada.quartos || pousada.quartos.length === 0" class="no-rooms">
+            <p>Não há quartos cadastrados para esta pousada.</p>
+        </div>
+    </div>
+
+</div>

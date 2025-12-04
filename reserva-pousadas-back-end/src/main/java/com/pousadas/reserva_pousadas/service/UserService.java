@@ -20,15 +20,20 @@ public class UserService {
         return userRepo.findAll();
     }
 
-    public User buscarPorIdUsuarios(@PathVariable Integer id) {
+    public User buscarPorId(@PathVariable Long id) {
         return userRepo.findById(id).orElse(null);
+    }
+
+    public User buscarPorIdUsuarios(Integer id) {
+         // Converte Integer para Long antes de passar para o Repositório
+         return userRepo.findById(id.longValue()).orElse(null);
     }
 
     public User criarUsuarios(@RequestBody User usuario) {
         return userRepo.save(usuario);
     }
 
-    public void deletarUsuarios(@PathVariable Integer id) {
+    public void deletarUsuarios(@PathVariable Long id) {
         userRepo.deleteById(id);
     }
 
@@ -36,7 +41,7 @@ public class UserService {
         return userRepo.findByEmail(email).orElse(null);
     }
 
-    public User atualizarUsuarios(Integer id, User dadosAtualizados) {
+    public User atualizarUsuarios(Long id, User dadosAtualizados) {
     User user = userRepo.findById(id)
         .orElseThrow(() -> new RuntimeException("Usuário não encontrado: " + id));
 

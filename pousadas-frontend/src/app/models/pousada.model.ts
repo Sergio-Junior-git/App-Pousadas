@@ -6,4 +6,5 @@ export interface Pousada {
   cidade: string;
   estado: string;
   telefone: string;
+  preco: number;
 }

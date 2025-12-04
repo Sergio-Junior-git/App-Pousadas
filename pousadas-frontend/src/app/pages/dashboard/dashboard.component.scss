@@ -1,0 +1,77 @@
+// 1. Aplica a cor PRIMÁRIA (o azul da sua Toolbar/Sidebar) ao fundo do componente
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; 
+    padding: 50px 20px;
+    background-color: #161215; 
+    min-height: calc(100vh - 64px - 40px);
+    text-align: center;
+}
+
+.hero-container {
+    max-width: 800px;
+    width: 100%;
+}
+
+// 2. Ajusta o texto para branco ou cinza claro para contraste com o fundo azul
+.main-title {
+    font-size: 3em;
+    font-weight: 700;
+    color: white; // Título Branco para destacar
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    font-size: 1.2em;
+    color: #e0e0e0; // Cinza claro para o subtítulo
+    margin-bottom: 30px;
+}
+
+// 3. Mantém o Card de Busca BRANCO (Fundo Mais Claro)
+.search-card {
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); // Sombra mais escura para o fundo azul
+    background-color: #161215; // Fundo branco de destaque
+    
+    mat-card-content {
+        padding: 0;
+    }
+}
+
+.search-form {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    
+    .search-field {
+        flex-grow: 1;
+        
+        &.date-field {
+             max-width: 250px;
+        }
+    }
+    
+    .search-button {
+        height: 56px;
+        min-width: 150px;
+        font-size: 1.1em;
+    }
+}
+
+// Responsividade simples
+@media (max-width: 768px) {
+    .search-form {
+        flex-direction: column;
+        
+        .search-field, .date-field, .search-button {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+    
+    .main-title {
+        font-size: 2em;
+    }
+}

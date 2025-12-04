@@ -33,7 +33,9 @@ export class RegisterComponent {
 
     this.auth.register(this.user).subscribe({
       next: (resp) => {
-        this.token.setToken(resp.token); // backend já retorna token
+        if (resp.token) {
+          this.token.setToken(resp.token);
+        } // backend já retorna token
         this.router.navigate(['/']);
       },
       error: (err) => {

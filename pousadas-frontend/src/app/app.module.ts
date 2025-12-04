@@ -18,7 +18,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegisterComponent } from './pages/register/register.component';
 import { MatSelectModule } from '@angular/material/select';
 import { PousadasCriarComponent } from './pages/pousadas/pousadas-criar/pousadas-criar.component';
-import { PousadaEditComponent } from './pages/pousadas/pousada-edit/pousada-edit.component';
+import { MatGridTile, MatGridList } from "@angular/material/grid-list";
+import { MatDivider } from "@angular/material/divider";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatNativeDateModule } from "@angular/material/core";
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
+import { HomeComponent } from './pages/home/home.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { PousadaDetalheComponent } from './pages/pousadas/pousada-detalhe/pousada-detalhe.component';
+import { ReservasComponent } from './pages/reservas/reservas.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +37,10 @@ import { PousadaEditComponent } from './pages/pousadas/pousada-edit/pousada-edit
     PousadasListComponent,
     RegisterComponent,
     PousadasCriarComponent,
-    PousadaEditComponent
+    HomeComponent,
+    DashboardComponent,
+    PousadaDetalheComponent,
+    ReservasComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +54,16 @@ import { PousadaEditComponent } from './pages/pousadas/pousada-edit/pousada-edit
     MatTableModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatSelectModule
+    MatSelectModule,
+    MatGridTile,
+    MatGridList,
+    MatDivider,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatSelectModule,
 ],
   providers: [
     provideClientHydration(withEventReplay()),

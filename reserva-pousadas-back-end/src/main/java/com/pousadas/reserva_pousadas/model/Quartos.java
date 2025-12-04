@@ -2,6 +2,7 @@ package com.pousadas.reserva_pousadas.model;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.pousadas.reserva_pousadas.model.Enum.TipoQuarto;
 
 import jakarta.persistence.CascadeType;
@@ -43,6 +44,7 @@ public class Quartos {
     @JoinColumn(name = "pousada_id", nullable = false)
     private Pousada pousada;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "quarto", cascade = CascadeType.ALL)
     private List<Reserva> reservas;
 

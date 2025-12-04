@@ -4,9 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import com.pousadas.reserva_pousadas.model.Pousada;
 import com.pousadas.reserva_pousadas.repository.PousadaRepo;
@@ -23,6 +20,11 @@ public class PousadasService {
 
     public Pousada buscarPorIdPousadas(Long id) {
         return pousadaRepo.findById(id).orElse(null);
+    }
+    
+    public List<Pousada> buscarPorCidade(String cidade) {
+        // Encontra todas as pousadas onde o nome da cidade contenha a string fornecida (ignorando maiúsculas/minúsculas)
+        return pousadaRepo.findByCidadeContainingIgnoreCase(cidade);
     }
 
     public Pousada salvarPousadas(Pousada pousada) {
