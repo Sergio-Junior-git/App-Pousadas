@@ -1,0 +1,24 @@
+para rodar o sistema é necessario fazer mudanças de conta e senha no application.properties no back end
+
+apos isso, sera necessario rodar o ReservaPousadasAplication.java
+
+agora pro frontend apos a instação você fara usara o comando cd pousadas-frontend e depois o comando npm install
+
+apos isso vc pode rodar o sistema usando o comando ng serve.
+
+
+qualquer duvida sobre funcionamento entrar em contato por meio do email sergio.galdino.junior01@gmail.com
+
+
+Participantes: 
+Sérgio José Galdino Da Silva Júnior
+01800630
+
+Gheovana Pietra Araújo dos Santos
+01799514
+
+Nathalia de Araújo Silva 
+01379923
+
+Maria Vitória Albuquerque Cunha 
+01797764
