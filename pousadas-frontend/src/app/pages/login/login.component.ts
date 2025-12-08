@@ -1,7 +1,7 @@
-import { Component, Inject, PLATFORM_ID  } from '@angular/core';
+import { Component, Inject, OnInit, PLATFORM_ID  } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { TokenService } from '../../services/token.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 
 @Component({
@@ -10,16 +10,27 @@ import { isPlatformBrowser } from '@angular/common';
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   email = '';
   senha = '';
+  private returnUrl: string = '/';
 
   constructor(
     private auth: AuthService,
     private token: TokenService,
     private router: Router,
+    private route: ActivatedRoute,
     @Inject(PLATFORM_ID) private platformId: Object
-  ) {}
+  ) {
+  }
+  
+
+  ngOnInit(): void {
+      // Mova a lógica de subscribe para o ngOnInit
+      this.route.queryParams.subscribe(params => {
+        this.returnUrl = params['returnUrl'] || '/';
+      });
+  }
 
   login() {
     this.token.clear();
@@ -39,9 +50,12 @@ export class LoginComponent {
           if (resp.token) { // Verifica se resp.token não é undefined/null/string vazia
             this.token.setToken(resp.token);
           }
-          this.router.navigate(['/']);
-        },
+          this.router.navigate([this.returnUrl]);        },
         error: () => alert('Login inválido')
       });
+    }
+
+    regitrar() {
+      this.router.navigate(['/register']);
     }
 }

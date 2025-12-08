@@ -22,6 +22,11 @@ public class ReservaService {
         return reservaRepo.findById(id).orElse(null);
     }
 
+    public List<Reserva> buscarReservasPorUsuario(Long userId) {
+      // Você precisará criar este método no seu ReservaRepo
+        return reservaRepo.findByUsuarioUserId(userId); 
+    }
+
     public Reserva salvarReservas(Reserva reserva) {
         boolean existeConflito = reservaRepo.existsByQuartoIdAndPeriodo(
             reserva.getQuarto().getQuartosId(),

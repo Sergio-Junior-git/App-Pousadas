@@ -44,6 +44,6 @@ export class ReservaService {
 
   // NOVO MÉTODO: Busca reservas por ID do usuário (backend: /reservas/usuario/{userId})
   buscarReservasPorUsuario(userId: number): Observable<Reserva[]> {
-      return this.http.get<Reserva[]>(`${this.apiUrl}/usuario/${userId}`);
+      return this.http.get<Reserva[]>(`${this.apiUrl}/id/${userId}`);
   }
 }

@@ -15,10 +15,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.util.Collection;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "usuarios")
-public class User {
+public class User implements UserDetails{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -113,5 +117,35 @@ public class User {
         this.reservas = reservas;
     }
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        // Usa o TipoUsuario para definir as permissões/roles
+        // Isso é crucial para que o Spring Security saiba qual é o papel do usuário.
+        return List.of(new SimpleGrantedAuthority(tipoUsuario.name()));
+    }
+
+    @Override
+    public String getPassword() {
+        return this.senha;
+    }
+
+    @Override
+    public String getUsername() {
+        // O Spring Security usa isso como o nome de usuário (seu email)
+        return this.email; 
+    }
+
+    // Deixe os demais métodos retornando true (ou conforme sua lógica de negócios)
+    @Override
+    public boolean isAccountNonExpired() { return true; }
+
+    @Override
+    public boolean isAccountNonLocked() { return true; }
+
+    @Override
+    public boolean isCredentialsNonExpired() { return true; }
+
+    @Override
+    public boolean isEnabled() { return true; }
     
 }

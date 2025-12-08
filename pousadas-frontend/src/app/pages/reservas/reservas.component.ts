@@ -31,7 +31,10 @@ export class ReservasComponent implements OnInit{
     } else {
       this.snackBar.open('Sua sessão expirou. Faça login novamente.', 'Fechar', { duration: 5000 });
       this.loading = false;
-      this.router.navigate(['/login']);
+      
+      // *** MODIFICAÇÃO AQUI ***
+      // Redireciona para o login e passa a URL atual (/reservas) como 'returnUrl'
+      this.router.navigate(['/login'], { queryParams: { returnUrl: this.router.url } }); 
     }
   }
 

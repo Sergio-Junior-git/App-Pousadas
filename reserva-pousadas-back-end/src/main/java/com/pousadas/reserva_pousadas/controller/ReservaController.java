@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,6 +43,15 @@ public class ReservaController {
     public Reserva buscarIdReserva(@PathVariable Long id) {
         return reservaService.buscarPorIdReservas(id);
     }
+
+    @GetMapping("/id/{userId}")
+    // ADICIONE A ANOTAÇÃO DE VOLTA
+    @PreAuthorize("#userId == authentication.principal.userId") 
+    public List<Reserva> buscarReservasPorUsuario(@PathVariable Long userId) {
+       // O método precisa chamar a camada de serviço
+       return reservaService.buscarReservasPorUsuario(userId);
+    }
+    
 
     @PostMapping
     public ResponseEntity<Reserva> criarReserva(@RequestBody Reserva reserva) {

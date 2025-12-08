@@ -1,6 +1,7 @@
 package com.pousadas.reserva_pousadas.repository;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -14,5 +15,7 @@ public interface ReservaRepo extends JpaRepository<Reserva, Long> {
            "WHERE r.quarto.quartosId = :quartoId " +
            "AND (r.dataCheckin <= :dataCheckout AND r.dataCheckout >= :dataCheckin)")
     boolean existsByQuartoIdAndPeriodo(Long quartoId, LocalDate dataCheckin, LocalDate dataCheckout);
+
+    List<Reserva> findByUsuarioUserId(Long userId);
 }
 
